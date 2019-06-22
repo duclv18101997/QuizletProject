@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+
+#app {
+
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+#background {
+    background-image: url('../image/splash-intl-laptop-desktop.uzv4.jpg');
+    background-size: cover;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+}
+
+#login-screen {
+    width: 100%;
+    height: 80%;
+}
+
+#login-form-container {
+    height: 100%;
+    width: 30%;
+    margin-left: 35%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #b3dae2;
+    border-radius: 10px;
+}
+
+#login-form-container h2, #login-form-container .form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+#login-form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 300px;
+    /* border: 1px solid red;
+    background-color: #e9e9e9; */
+
+}
+
+#reset-form{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 300px;
+}
+
+
+.form {
+    width: 100%;
+    height: 30px;
+}
+
+.input-text input {
+    width: 100%;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #e9e9e9;
+    background-color: white;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+
+
+#submit-content a{
+    margin-top: 5px;
+    text-decoration-line: none;
+    float: left;
+    color: #105bd4;
+}
+
+
+#login-button input{
+    height: 30px;
+    width: 300px;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #15d1d1;
+}
+#submit-content input{
+    height: 30px;
+    width: 60px;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #15d1d1;
+}
+
+
+
+#submit-content-google a{
+    margin-top: 5px;
+    text-decoration-line: none;
+    float: left;
+    color: #105bd4;
+}
+
+#submit-content-google #google{
+    float: right;
+    
+}
+
+.btn{
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #4482FF;
+    border-color: #4482FF;
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    line-height: 1.5;
+    padding: 0 25px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 36px;
+}
+
+
+
+.secondary-btn{
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    line-height: 1.5;
+    padding: 0 25px;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 36px;
+    border:1px solid #e9e9e9
+}
+
