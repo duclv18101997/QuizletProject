@@ -156,12 +156,17 @@ view.setActiveScreen = (screenName) => {
                 }
   
             //listen click create folder form
-            // const btnCreate =document.getElementById('btn-create-folder');
-            // if(btnCreate){
-            //     btnCreate.addEventListener('click', () => {
+            const btnCreate =document.getElementById('form-create-folder');
+            if(btnCreate){
+                btnCreate.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const nameOfFolder = btnCreate.folderName.value;
+                    const question = btnCreate.questionName.value;
+                    const answer = btnCreate.answerName.value;
+                    controller.validateCreateFolderInfor(nameOfFolder,question,answer);
 
-            //     });
-            // }
+                });
+            }
             break;
     }
 };
@@ -190,7 +195,10 @@ view.clearRegisterInfo = () => {
 
 view.displayUserInfor = () => {
     const userInfor = document.getElementById('userInfor');
-    if(userInfor){
+    const bigName = document.getElementById('big-name');
+    if(userInfor && bigName){
+        bigName.style.display = 'flex';
+        bigName.innerText = model.loginUser.displayName[0];
         userInfor.innerText = model.loginUser.displayName;
     }
 };

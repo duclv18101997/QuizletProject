@@ -85,7 +85,7 @@ components.resetPage = `
 `;
 
 components.homePage = `
-<div id="content" class="content">
+<div id="content" class="content">  
             <div id="site-bar" class="site-bar">
                 <div class="menu" id="menu">
                     <div class="menu-item" id="menu-item">
@@ -157,7 +157,7 @@ components.welcomePageQuiz = `
             <div class="main-Introduce " data-aos='fade-up' data-aos-anchor-placement="top-center">
                 <h1 class="Introduce-Title">Cách tốt nhất để đạt điểm tuyệt đối bài thi.</h1>
                 <p class="Introduce-Content">Hãy bắt đầu tạo các thẻ ghi nhớ dành riêng cho bạn. Biến khoảng cách bạn và thế giới gần nhau hơn</p>
-                <button class="btn" id="btn-add-new">Bắt đàu học</button>
+                <button class="btn" id="btn-start">Bắt đầu học</button>
             </div>
             <div></div>
         </div>
@@ -207,35 +207,27 @@ components.createFolderPage = `
             <div class="list-add">
             <div class="input-folder-infor-item">
                 <div class="input-question input-infor">
-                    <input type="text" id="input-folder-question" placeholder="Enter question" />
+                    <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
                     <div id="question-error-message" class="error-message"></div>
                 </div>
                 <div class="input-answer input-infor">
-                    <input type="text" id="input-folder-answer" placeholder="Enter answer" />
+                    <input type="text" id="input-folder-answer" name = "answerName" placeholder="Enter answer" />
                     <div id="answer-error-message" class="error-message"></div>
                 </div>
             </div>
 
             <div class="input-folder-infor-item">
                 <div class="input-question input-infor">
-                    <input type="text" id="input-folder-question" placeholder="Enter question" />
+                    <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
                     <div id="question-error-message" class="error-message"></div>
                 </div>
                 <div class="input-answer input-infor">
-                    <input type="text" id="input-folder-answer" placeholder="Enter answer" />
+                    <input type="text" id="input-folder-answer" name = "answerName" placeholder="Enter answer" />
                     <div id="answer-error-message" class="error-message"></div>
                 </div>
             </div>
-            <div class="input-folder-infor-item">
-                <div class="input-question input-infor">
-                    <input type="text" id="input-folder-question" placeholder="Enter question" />
-                    <div id="question-error-message" class="error-message"></div>
-                </div>
-                <div class="input-answer input-infor">
-                    <input type="text" id="input-folder-answer" placeholder="Enter answer" />
-                    <div id="answer-error-message" class="error-message"></div>
-                </div>
-            </div>
+
+            
         </div>
         <div class="add-more-item">
             <button class="btn" id='btn-add-more-item'>Thêm thuật ngữ</button>
