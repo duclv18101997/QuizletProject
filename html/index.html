@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="../css/welcomePage.css" />
     <link rel="stylesheet" type="text/css" href="../css/homePage.css" />
     <link rel="stylesheet" type="text/css" href="../css/createFolder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
@@ -36,65 +38,7 @@
         </div>
     </header>
     <div id="app">
-        <div id="content" class="content">
-            <div id="site-bar" class="site-bar">
-                <div class="menu" id="menu">
-                    <div class="menu-item">
-                        <img src="../image/homepage.png" />
-                        <div class="menu-name">Trang chủ</div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="../image/folder2.png" />
-                        <div class="menu-name">Học phần của bạn</div>
-                    </div>
-                </div>
-            </div>
-            <div id="list-folder" class="list-folder">
-                <div class="list-folder">
-                        <div class="list-folder-item">
-                            <div class="list-folder-item-infor">
-                                <div class="question-number">
-                                    100 thuật ngữ
-                                </div>
-                                <div class="author">
-                                    Duc Le
-                                </div>
-                            </div>
-                            <div class="folder-header">
-                                JPD323-Kanji-lesson1
-                            </div>
-                        </div>
-
-                        <div class="list-folder-item">
-                            <div class="list-folder-item-infor">
-                                <div class="question-number">
-                                    200 thuật ngữ
-                                </div>
-                                <div class="author">
-                                    Duy DN
-                                </div>
-                            </div>
-                            <div class="folder-header">
-                                JPD323-Kotoba-lesson1
-                            </div>
-                        </div>
-
-                        <div class="list-folder-item">
-                                <div class="list-folder-item-infor">
-                                    <div class="question-number">
-                                        20 thuật ngữ
-                                    </div>
-                                    <div class="author">
-                                        DucLv
-                                    </div>
-                                </div>
-                                <div class="folder-header">
-                                    JPD323-Kotoba-lesson1
-                                </div>
-                            </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
     <footer class="myFooter">
         <div class="Footer-content">
@@ -113,13 +57,17 @@
                     <li>Điều khoản dịch vụ</li>
                 </ul>
             </div>
-
-        </div>
+            </div>
     </footer>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="../js/components.js"></script>
     <script src="../js/view.js"></script>
     <script src="../js/controller.js"></script>
