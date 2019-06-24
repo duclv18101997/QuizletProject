@@ -154,7 +154,7 @@ view.setActiveScreen = (screenName) => {
                 if (app) {
                     app.innerHTML = components.createFolderPage;
                 }
-
+  
             //listen click create folder form
             // const btnCreate =document.getElementById('btn-create-folder');
             // if(btnCreate){

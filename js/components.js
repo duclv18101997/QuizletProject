@@ -106,7 +106,7 @@ components.homePage = `
                 <div class="list-folder">
                         <div class="list-folder-item">
                             <div class="list-folder-item-infor">
-                                <div class="question-number">
+                                <div class="question-number"> 
                                     100 thuật ngữ
                                 </div>
                                 <div class="author">

@@ -33,7 +33,7 @@ model.loginUser = (email, password) => {
             };
             view.setActiveScreen('homePage');
         }else{
-            window.alert('this email is not activate, please verify your email!');
+            window.alert('this email is not activate, please verify your email!');  
         }
     })
     .catch((error) => {

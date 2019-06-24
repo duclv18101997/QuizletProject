@@ -41,7 +41,7 @@ controller.validateRegisterInfo = (firstName, lastName, email, password, confirm
     } else {
         view.renderErrorMessage('error-last-name-message', '');
     }
-
+ 
     //check email
     if (!email) {
         view.renderErrorMessage('error-email-message', 'Please input your email');
