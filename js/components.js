@@ -216,16 +216,7 @@ components.createFolderPage = `
                 </div>
             </div>
 
-            <div class="input-folder-infor-item">
-                <div class="input-question input-infor">
-                    <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
-                    <div id="question-error-message" class="error-message"></div>
-                </div>
-                <div class="input-answer input-infor">
-                    <input type="text" id="input-folder-answer" name = "answerName" placeholder="Enter answer" />
-                    <div id="answer-error-message" class="error-message"></div>
-                </div>
-            </div>
+            
 
             
         </div>
@@ -234,4 +225,4 @@ components.createFolderPage = `
         </div>
     </form>
         </div>
-`;
+`; 

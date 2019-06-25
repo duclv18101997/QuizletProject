@@ -124,7 +124,7 @@ view.setActiveScreen = (screenName) => {
                     const email = resetForm.email.value;
                     controller.validateResetInfo(email);
                 });
-            }
+            } 
             break;
             case 'homePage':
                 if (app) {

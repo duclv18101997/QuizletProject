@@ -73,7 +73,7 @@ controller.validateRegisterInfo = (firstName, lastName, email, password, confirm
         //call model => check database
         model.creatNewUser(firstName, lastName, email, password);
     }
-
+ 
 };
 
 //validate reset info
@@ -118,5 +118,6 @@ controller.validateResetInfo = (email) => {
 
     if(nameOfFolder && question && answer){
         //call model
+        model.saveFolderInfor(nameOfFolder,question,answer);
     }
   };
