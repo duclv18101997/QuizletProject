@@ -140,6 +140,28 @@ view.setActiveScreen = (screenName) => {
                  btnRegister1.style.display = 'none';
                  view.displayUserInfor();
              }
+
+             // listen click tao thu muc
+             const createFolder = document.getElementById('taoThumuc');
+             if(createFolder){
+                 createFolder.addEventListener('click', () => {
+                     console.log('aa');
+                    view.setActiveScreen('createFolderPage');
+                 });
+             }
+            break;
+            case 'createFolderPage':
+                if (app) {
+                    app.innerHTML = components.createFolderPage;
+                }
+  
+            //listen click create folder form
+            // const btnCreate =document.getElementById('btn-create-folder');
+            // if(btnCreate){
+            //     btnCreate.addEventListener('click', () => {
+
+            //     });
+            // }
             break;
     }
 };
