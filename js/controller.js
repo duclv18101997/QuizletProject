@@ -95,3 +95,28 @@ controller.validateResetInfo = (email) => {
     }
   
   };
+
+  controller.validateCreateFolderInfor = (nameOfFolder,question,answer) => {
+    //check nameOfFolder
+    if(!nameOfFolder){
+        view.renderErrorMessage('folder-name-error-message', 'Please input folder name');
+    }else{
+        view.renderErrorMessage('folder-name-error-message', '');
+    }
+    //check question
+    if(!question){
+        view.renderErrorMessage('question-error-message','Please input question');
+    }else{
+        view.renderErrorMessage('question-error-message','');
+    }
+    //check answer
+    if(!answer){
+        view.renderErrorMessage('answer-error-message', 'Please input answer');
+    }else{
+        view.renderErrorMessage('answer-error-message', '');
+    }
+
+    if(nameOfFolder && question && answer){
+        //call model
+    }
+  };

@@ -207,17 +207,26 @@ components.createFolderPage = `
             <div class="list-add">
             <div class="input-folder-infor-item">
                 <div class="input-question input-infor">
+<<<<<<< HEAD
                     <input type="text" id="input-folder-question" placeholder="Enter question" />
                     <div id="question-error-message" class="error-message"></div>
                 </div>
                 <div class="input-answer input-infor">
                     <input type="text" id="input-folder-answer" placeholder="Enter answer" />
+=======
+                    <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
+                    <div id="question-error-message" class="error-message"></div>
+                </div>
+                <div class="input-answer input-infor">
+                    <input type="text" id="input-folder-answer" name = "answerName" placeholder="Enter answer" />
+>>>>>>> 0a39913b4093cdffb2b32dfbbe5de56f5d67a06a
                     <div id="answer-error-message" class="error-message"></div>
                 </div>
             </div>
 
             <div class="input-folder-infor-item">
                 <div class="input-question input-infor">
+<<<<<<< HEAD
                     <input type="text" id="input-folder-question" placeholder="Enter question" />
                     <div id="question-error-message" class="error-message"></div>
                 </div>
@@ -317,6 +326,23 @@ components.StudyFlashCard = `
                     <button class="btn" id=' btn-add-more-item '>Thêm hoặc chỉnh sửa thuật ngữ</button>
                 </div>
             </form>
+=======
+                    <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
+                    <div id="question-error-message" class="error-message"></div>
+                </div>
+                <div class="input-answer input-infor">
+                    <input type="text" id="input-folder-answer" name = "answerName" placeholder="Enter answer" />
+                    <div id="answer-error-message" class="error-message"></div>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="add-more-item">
+            <button class="btn" id='btn-add-more-item'>Thêm thuật ngữ</button>
+        </div>
+    </form>
+>>>>>>> 0a39913b4093cdffb2b32dfbbe5de56f5d67a06a
         </div>
 
 `;

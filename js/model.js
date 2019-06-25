@@ -52,3 +52,8 @@ model.resetPassword = (email) => {
         window.alert(error.message);
     })
 };
+
+model.loadFolder = () => {
+    const db = firebase.firestore();
+    
+};
