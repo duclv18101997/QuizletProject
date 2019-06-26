@@ -1,10 +1,11 @@
-.create-folder{
+.create-folder {
     height: 100%;
     padding-left: 20%;
     padding-right: 20%;
 }
 
-.folder-head{
+.folder-head {
+    height: 100%;
     padding-top: 50px;
     padding-left: 10px;
     height: 200px;
@@ -15,33 +16,70 @@
 }
 
 .folder-head .folder-head-heading {
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
     font-weight: bold;
 }
 
-.folder-head .folder-head-heading .folder-head-heading-text{
+.folder-head .folder-head-heading .folder-head-heading-text {
     font-size: 20px;
 }
 
-.folder-head .folder-head-heading .folder-head-heading-button{
+.folder-head .folder-head-heading .folder-head-heading-button {
     padding-left: 70%;
-
 }
 
-.folder-head .input-folder-name{
+.folder-head .input-folder-name {
     padding-top: 30px;
 }
 
- .input-infor input {
+.input-infor input {
     border: 0;
     outline: 0;
     background: transparent;
     border-bottom: 1px solid #00a2ff;
     width: 300px;
-  }
+}
+
+.create-title {
+    padding-top: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 30px;
+    color: rgb(22, 175, 175);
+}
+
+.input-folder-infor-item {
+    height: 80px;
+    width: 100%;
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    box-shadow: 3px 5px #11b7bd;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.input-folder-infor-item .input-question {
+    width: 40%;
+    padding-left: 10px;
+}
+
+.input-folder-infor-item .input-answer {
+    width: 40%;
+    padding-left: 10%;
+}
+
+.add-more-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+  
 
   .create-title{
       padding-top: 50px;
@@ -76,5 +114,4 @@
      display: flex;
      align-items: center;
      justify-content: center;
-     
- } 
+ }

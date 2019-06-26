@@ -7,10 +7,10 @@ window.onload = () => {
         storageBucket: "quizletproject-9aba3.appspot.com",
         messagingSenderId: "26872049070",
         appId: "1:26872049070:web:5b93774e6e0f871f"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
-      //set welcome page
-    view.setActiveScreen('welcomePageQuiz');  
+    //set welcome page
+   // view.setActiveScreen('welcomePageQuiz');
 };

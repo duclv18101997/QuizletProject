@@ -88,11 +88,11 @@ components.homePage = `
 <div id="content" class="content">  
             <div id="site-bar" class="site-bar">
                 <div class="menu" id="menu">
-                    <div class="menu-item" id="menu-item">
+                    <div class="menu-item" id="home-page">
                         <img src="../image/homepage.png" />
                         <div class="menu-name">Trang chủ</div>
                     </div>
-                    <div class="menu-item" id="menu-item">
+                    <div class="menu-item" id="my-folder">
                         <img src="../image/folder2.png" />
                         <div class="menu-name">Học phần của bạn </div>
                     </div>
@@ -189,24 +189,121 @@ components.welcomePageQuiz = `
 components.createFolderPage = `
 <div class="create-folder">
             <form id="form-create-folder">
-            <div class="folder-head">
-                <div class="folder-head-heading">
-                    <div class="folder-head-heading-text">
-                        Tạo học phần mới
+                <div class="folder-head">
+                    <div class="folder-head-heading">
+                        <div class="folder-head-heading-text">
+                            Tạo học phần mới
+                        </div>
+                        <div class="folder-head-heading-button">
+                            <button class="btn" id='btn-create-folder'>Tạo</button>
+                        </div>
                     </div>
-                    <div class="folder-head-heading-button">
-                        <button class="btn" id='btn-create-folder'>Tạo</button>
+                    <div class="input-folder-name input-infor">
+                        <input type="text" id="input-folder-name" name="folderName"
+                            placeholder="Enter folder name..." />
+                        <div id="folder-name-error-message" class="error-message"></div>
                     </div>
                 </div>
-                <div class="input-folder-name input-infor">
-                    <input type="text" id="input-folder-name" name="folderName" placeholder="Enter folder name..." />
-                    <div id="folder-name-error-message" class="error-message"></div>
+                <div class="create-title">Thêm thuật ngữ và định nghĩa:</div>
+                <div class="list-add" id="list-add">
+                    <div class="input-folder-infor-item" id="input-folder-infor-item">
+                        <div class="input-question input-infor">
+                            <input type="text" id="input-folder-question" name="questionName"
+                                placeholder="Enter question" />
+                            <div id="question-error-message" class="error-message"></div>
+                        </div>
+                        <div class="input-answer input-infor">
+                            <input type="text" id="input-folder-answer" name="answerName" placeholder="Enter answer" />
+                            <div id="answer-error-message" class="error-message"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+            <div class="add-more-item">
+                <button class="btn" id='btn-add-more-item'>Thêm thuật ngữ</button>
+                <button class="btn" id='btn-clear-item'>Xóa thuật ngữ</button>
+            </div>
+            
+
+        </div>
+`; 
+components.searchScreen = `
+<div class="search-main-screen">
+<div class="search-screen">
+    <div id="list-folder" class="list-folder">
+        <div class="list-folder-item">
+            <div class="list-folder-item-infor">
+                <div class="question-number">
+                    100 thuật ngữ
+                </div>
+                <div class="author">
+                    Duc Le
                 </div>
             </div>
-            <div class="create-title">Thêm thuật ngữ và định nghĩa:</div>
-            <div class="list-add">
-            <div class="input-folder-infor-item">
-                <div class="input-question input-infor">
+            <div class="folder-header">
+                JPD323-Kanji-lesson1
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+`;
+components.StudyFlashCard = `
+<div class="main-study-screen">
+            <div class="flashcard-content">
+                <h3 class="flashcard-title">JPD322_Kanji Lession 1</h3>
+                <input class="main-flashcard" type="text" readonly='' value="abc">
+                <div class="flashcard-next">
+                    <img src="../image/left-arrow.png" />
+                    <img src="../image/right-arrow.png" />
+                </div>
+            </div>
+            <div class="author-content">
+                <img class="avatar-author" src="" />
+                <p class="name-author">DuyDNSE04661</p>
+            </div>
+            <form id="form-create-folder">
+                <div class="create-title">Thuật ngữ trong học phần này:</div>
+                <div class="list-add">
+                    <div class="input-folder-infor-item">
+                        <div class="input-question input-infor">
+                            <input type="text" id="render-folder-question" value="きょか" readonly='' />
+                            <div id="question-error-message" class="error-message"></div>
+                        </div>
+                        <div class="input-answer input-infor">
+                            <input type="text" id="render-folder-answer" value="許可 [HỨA KHẢ]" readonly='' />
+                            <div id="answer-error-message" class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="input-folder-infor-item">
+                        <div class="input-question input-infor">
+                            <input type="text" id="render-folder-question" value="ゆるす" readonly='' />
+                            <div id="question-error-message" class="error-message"></div>
+                        </div>
+                        <div class="input-answer input-infor">
+                            <input type="text" id="render-folder-answer" value="許す [HỨA]" readonly='' />
+                            <div id="answer-error-message" class="error-message"></div>
+                        </div>
+                    </div>
+                    <div class="input-folder-infor-item">
+                        <div class="input-question input-infor">
+                            <input type="text" id="render-folder-question" value="とっきょ" readonly='' />
+                            <div id="question-error-message" class="error-message"></div>
+                        </div>
+                        <div class="input-answer input-infor">
+                            <input type="text" id="render-folder-answer" value="特許 [ĐẶC HỨA]" readonly='' />
+                            <div id="answer-error-message" class="error-message"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-more-item">
+                    <button class="btn" id=' btn-add-more-item '>Thêm hoặc chỉnh sửa thuật ngữ</button>
+                </div>
+            </form>
+
                     <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
                     <div id="question-error-message" class="error-message"></div>
                 </div>
@@ -217,8 +314,6 @@ components.createFolderPage = `
             </div>
 
             
-
-            
         </div>
         <div class="add-more-item">
             <button class="btn" id='btn-add-more-item'>Thêm thuật ngữ</button>
@@ -226,3 +321,4 @@ components.createFolderPage = `
     </form>
         </div>
 `; 
+

@@ -1,6 +1,7 @@
 const model = {};
 
 model.loginUser = undefined;
+model.listener = undefined;
 
 model.creatNewUser = (firstName, lastName, email, password) => {
 
@@ -61,62 +62,34 @@ model.loadFolder = () => {
 };
 
 // save folder infor to firebase
-// model.saveFolderInfor = (nameOfFolder, question, answer) => {
-//     const newFolder = {
-//         question: question,
-//         answer: answer,
-//     };
-//     const db = firebase.firestore();
-//     db.collection('folders')
-//     .doc('qE97IiG9jg3XlFJ1qbrs')
-//     .update({
-
-//         folder: firebase.firestore.FieldValue.arrayUnion(newFolder),
-
-//     });
-// };
-model.createConversation = (conversationName, userEmail) => {
-    const db = firebase.firestore();
-    const newConversation = {
-        name: conversationName,
-        User: [userEmail, model.loginUser.email],
-        createAt: new Date(),
-        messages: [],
-    };
-    db.collection('conversations').add(newConversation)
-        .then(() => {
-            view.setActiveScreen('chatPage');
-
-            //view.sendMessage()
-        })
-        .catch((error) => {
-            console.log(error);
-            window.alert(error.message);
-        }
-        );
-};
-
 model.saveFolderInfor = (nameOfFolders, questions, answers) => {
     const db = firebase.firestore();
-    // const newArrayFolder = {
-    //     question: questions,
-    //     answer: answers,
-    // };
     const newFolder = {
         folderName: nameOfFolders,
-        folder: [],
+        folder: firebase.firestore.FieldValue.arrayUnion({
+            question: questions,
+            answer: answers,
+        }),
         createAt: new Date(),
         user: model.loginUser.email,
     };
     db.collection('folders').add(newFolder)
         .then(() => {
             view.setActiveScreen('homePage');
-
-            //view.sendMessage()
         })
         .catch((error) => {
-            console.log(error);
+            console.log(error.code);
             window.alert(error.message);
         } 
         );
 }
+
+model.searchFolderInfor = (keyWord) => {
+    const db = firebase.firestore();
+    modle.listener = db.collection('folders')
+    .where('folderName','==',keyWord)
+    .onSnapshot((snapshot) => {
+
+    })
+    
+};

@@ -1,0 +1,52 @@
+.main-study-screen {
+    min-height: 100vh;
+}
+
+.main-study-screen .flashcard-content .main-flashcard {
+    height: 300px;
+    width: 500px;
+    text-align: center;
+    font-size: 50px;
+    margin: 5% 33% 50px 33%;
+    border: 1px solid #e9e9ee;
+    box-shadow: 5px 5px 5px 5px grey;
+    border-radius: 5px;
+}
+
+.main-study-screen .flashcard-content h3 {
+    font-size: 1.875rem;
+    font-weight: 700px;
+}
+
+.main-study-screen .flashcard-content .flashcard-title {
+    margin: 20px;
+}
+
+.main-study-screen .flashcard-content .flashcard-next {
+    display: flex;
+    justify-content: center;
+}
+
+.main-study-screen .flashcard-content .flashcard-next img {
+    margin-left: 10px;
+    margin-bottom: 50px;
+}
+
+.main-study-screen .author-content {
+    border-top: #e9e9ee solid 1px;
+    margin: 0px 0px 5px 50px;
+    border-bottom: #e9e9ee solid 1px;
+}
+
+.main-study-screen .author-content .name-author {
+    margin-right: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.285714285714286;
+    font-weight: bold;
+}
+
+.main-study-screen .list-add {
+    margin-left: 20%;
+    margin-right: 20%;
+}
