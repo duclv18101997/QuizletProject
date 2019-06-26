@@ -11,7 +11,7 @@
     color: #fff;
     height: 5rem;
     display: grid;
-    grid-template-columns: 10% 70% 20%;
+    grid-template-columns: 10% 60% 20%;
 }
 
 html,
@@ -95,7 +95,6 @@ body {
     font-weight: bold;
 }
 
-
 .btn {
     font-weight: 500;
     color: #ffffff;
@@ -119,29 +118,28 @@ body {
 .header-left { 
     margin-top: 20px;
     display: flex;
-    
-    /* padding-left: 50%; */
 }
-.display-user-infor{
-   
+
+.display-user-infor {
     display: flex;
     justify-content: flex-start;
 }
-.big-name{
+
+.big-name {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     border: 1px solid white;
     display: none;
     align-items: center;
-    
     justify-content: center;
     font-size: 25px;
 }
-.userInfor{
+
+.userInfor {
     margin-top: 5px;
     padding-left: 5px;
-   font-weight: bold;
+    font-weight: bold;
 }
 
 .footer-main {
@@ -155,7 +153,6 @@ body {
     min-width: 400px;
     min-height: 100vh;
     height: 100vh;
-    
     display: grid;
     grid-template-columns: 50% 50%;
     justify-content: center;
@@ -249,7 +246,7 @@ body {
 }
 
 .image-student-left {
-    margin-left: 300px;
+    margin-left: 250px;
 }
 
 .student-teacher {

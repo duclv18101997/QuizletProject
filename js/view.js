@@ -119,7 +119,7 @@ view.setActiveScreen = (screenName) => {
             const resetForm = document.getElementById('reset-form');
             if (resetForm) {
                 resetForm.addEventListener('submit', (event) => {
-                    event.preventDefault();//cancel action mặc định của form
+                    event.preventDefault(); //cancel action mặc định của form
 
                     const email = resetForm.email.value;
                     controller.validateResetInfo(email);
@@ -154,9 +154,10 @@ view.setActiveScreen = (screenName) => {
             const myFolder = document.getElementById('my-folder');
             if (myFolder) {
                 myFolder.addEventListener('click', () => {
-                    view.setActiveScreen('');
-                });
+                    model.loadFolder(model.loginUser.email);
+                })
             }
+
 
             //onsearch event
             const searchfolder = document.getElementById('search');
@@ -180,40 +181,39 @@ view.setActiveScreen = (screenName) => {
             if (btnCreate) {
                 btnCreate.addEventListener('submit', (event) => {
                     event.preventDefault();
-                    //   const nameOfFolder = btnCreate.folderName.value;
-                    //   const question = btnCreate.questionName.value;
-                    //   const answer = btnCreate.answerName.value;
                     const nameOfFolder = document.getElementById('input-folder-name').value;
                     const question = document.getElementById('input-folder-question').value;
                     const answer = document.getElementById('input-folder-answer').value;
-                    console.log(nameOfFolder);
-                    console.log(question);
-                    console.log(answer);
+                    
                     controller.validateCreateFolderInfor(nameOfFolder, question, answer);
+            })
+        }
 
-                });
-            }
+        //listen click them thuat ngu
+        const addMoreItem = document.getElementById('btn-add-more-item');
+        if (addMoreItem) {
+            addMoreItem.addEventListener('click', () => {
+                view.renderMoreItem();
+            })
+        }
 
-            //listen click them thuat ngu
-            const addMoreItem = document.getElementById('btn-add-more-item');
-            if (addMoreItem) {
-                addMoreItem.addEventListener('click', () => {
-                    view.renderMoreItem();
-                })
-            }
+        //listen click xoa thuat ngu
+        const cleartItem = document.getElementById('btn-clear-item');
+        if (cleartItem) {
+            cleartItem.addEventListener('click', () => {
+                view.clearItem();
+            });
+        }
+            break;
 
-            //listen click xoa thuat ngu
-            const cleartItem = document.getElementById('btn-clear-item');
-            if (cleartItem) {
-                cleartItem.addEventListener('click', () => {
-                    view.clearItem();
-                });
+        case 'StudyFlashCard':
+            if (app) {
+                app.innerHTML = components.StudyFlashCard;
             }
             break;
+
     }
 };
-
-
 
 view.renderErrorMessage = (elementId, errorMessage) => {
     const element = document.getElementById(elementId);
@@ -308,4 +308,81 @@ view.setHomePageScreen = () => {
             view.setActiveScreen('homePage');
         });
     }
+};
+
+
+//render folder
+view.renderFolderItem = (folder) => {
+    const listFolder = document.getElementById('list-folder');
+    const titleflashcart = document.getElementById('folder-name');
+    if (titleflashcart) {
+        const titleOfFlashcart = document.createElement('h3');
+        titleOfFlashcart.classList.add("flashcard-title");
+        titleOfFlashcart.innerText = folder.folderName + " - " + model.loginUser.displayName;
+        titleflashcart.appendChild(titleOfFlashcart);
+    }
+    if (listFolder) {
+        const listFolderItems = document.createElement('div');
+        const listFolderItemsInfor = document.createElement('div');
+        const listFolderQuestionNumber = document.createElement('div');
+        const listFolderQuestionName = document.createElement('div');
+        const listFolderAuthor = document.createElement('div');
+        listFolderItems.id = folder.id;
+        listFolderItems.classList.add('list-folder-item');
+        listFolderItemsInfor.classList.add('list-folder-item-infor');
+        listFolderAuthor.classList.add('author');
+        listFolderQuestionName.classList.add('folder-header');
+        listFolderQuestionNumber.classList.add('question-number');
+        listFolderQuestionName.innerText = folder.folderName;
+        listFolderAuthor.innerText = folder.user;
+        listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
+        listFolderItemsInfor.appendChild(listFolderQuestionNumber);
+        listFolderItemsInfor.appendChild(listFolderAuthor);
+        listFolderItems.appendChild(listFolderItemsInfor);
+        listFolderItems.appendChild(listFolderQuestionName);
+        listFolder.appendChild(listFolderItems);
+        listFolder.scrollTop = listFolder.scrollHeight;
+
+        //listen click for each folder item
+        listFolderItems.addEventListener('click', () => {
+            let folderInfor;
+            model.folders.forEach((item) => {
+                if (item.id === folder.id) {
+                    folderInfor = item;
+                    console.log(folderInfor);
+                    view.setActiveScreen('StudyFlashCard');
+                }
+                folderInfor.folder.forEach((item) => {
+                    view.addflashcart(item);
+                });
+
+            });
+        });
+    }
+
+
+
+};
+
+// add flashcart in study page
+view.addflashcart = (folder) => {
+    const listflashcart = document.getElementById('list-add');
+
+    if (listflashcart) {
+        const flashcartContainer = document.createElement('div');
+        const flashcartItemQuestion = document.createElement('div');
+        const flashcartItemAnswer = document.createElement('div');
+        flashcartContainer.classList.add('input-folder-infor-item');
+        flashcartItemQuestion.classList.add('input-question');
+        flashcartItemQuestion.classList.add('input-infor');
+        flashcartItemAnswer.classList.add('input-infor');
+        flashcartItemAnswer.classList.add('input-answer');
+        flashcartItemAnswer.innerHTML = '<input type="text" id="render-folder-question" value="' + folder.answer + '" readonly="" />';
+        flashcartItemQuestion.innerHTML = '<input type="text" id="render-folder-answer" value="' + folder.question + '" readonly="" />';
+        flashcartContainer.appendChild(flashcartItemQuestion);
+        flashcartContainer.appendChild(flashcartItemAnswer);
+        listflashcart.appendChild(flashcartContainer);
+        flashcartContainer.scrollTop = flashcartContainer.scrollHeight;
+    }
+
 };

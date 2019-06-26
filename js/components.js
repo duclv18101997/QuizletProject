@@ -103,7 +103,6 @@ components.homePage = `
                 </div>
             </div>
             <div id="list-folder" class="list-folder">
-                <div class="list-folder">
                         <div class="list-folder-item">
                             <div class="list-folder-item-infor">
                                 <div class="question-number"> 
@@ -252,29 +251,23 @@ components.searchScreen = `
 `;
 components.StudyFlashCard = `
 <div class="main-study-screen">
-            <div class="flashcard-content">
-                <h3 class="flashcard-title">JPD322_Kanji Lession 1</h3>
+            <div class="flashcard-content" id='flashcard-content'>
+            <div id='folder-name'></div>
                 <input class="main-flashcard" type="text" readonly='' value="abc">
                 <div class="flashcard-next">
                     <img src="../image/left-arrow.png" />
                     <img src="../image/right-arrow.png" />
                 </div>
             </div>
-            <div class="author-content">
-                <img class="avatar-author" src="" />
-                <p class="name-author">DuyDNSE04661</p>
-            </div>
             <form id="form-create-folder">
                 <div class="create-title">Thuật ngữ trong học phần này:</div>
-                <div class="list-add">
-                    <div class="input-folder-infor-item">
+                <div class="list-add" id='list-add'>
+                    <div class="input-folder-infor-item" id='flastcart-infor-item'>
                         <div class="input-question input-infor">
                             <input type="text" id="render-folder-question" value="きょか" readonly='' />
-                            <div id="question-error-message" class="error-message"></div>
                         </div>
                         <div class="input-answer input-infor">
                             <input type="text" id="render-folder-answer" value="許可 [HỨA KHẢ]" readonly='' />
-                            <div id="answer-error-message" class="error-message"></div>
                         </div>
                     </div>
 

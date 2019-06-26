@@ -46,6 +46,10 @@
     font-weight: bold;
 }
 
+.main-study-screen .create-title {
+    margin-left: 20%;
+}
+
 .main-study-screen .list-add {
     margin-left: 20%;
     margin-right: 20%;

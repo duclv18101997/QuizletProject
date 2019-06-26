@@ -56,8 +56,25 @@ model.resetPassword = (email) => {
 
 
 //load all folder of login user to homepage
-model.loadFolder = () => {
+//load 1 folder
+
+model.loadFolder = (email) => {
     const db = firebase.firestore();
+    model.listener = db.collection('folders')
+        .where('user', '==', email)
+        .onSnapshot((snapshot) => {
+            const folders = [];
+            snapshot.docs.forEach((items) => {
+                const folder = items.data();
+                folder.id = items.id;
+                console.log(folder.id);
+                folders.push(folder);
+            });
+            model.folders = folders;
+            model.folders.forEach((item) => {
+                view.renderFolderItem(item);
+            });
+        });
 
 };
 
@@ -66,10 +83,9 @@ model.saveFolderInfor = (nameOfFolders, questions, answers) => {
     const db = firebase.firestore();
     const newFolder = {
         folderName: nameOfFolders,
-        folder: firebase.firestore.FieldValue.arrayUnion({
-            question: questions,
-            answer: answers,
-        }),
+        folder: [
+            {}
+        ],
         createAt: new Date(),
         user: model.loginUser.email,
     };
@@ -84,12 +100,12 @@ model.saveFolderInfor = (nameOfFolders, questions, answers) => {
         );
 }
 
-model.searchFolderInfor = (keyWord) => {
-    const db = firebase.firestore();
-    modle.listener = db.collection('folders')
-    .where('folderName','==',keyWord)
-    .onSnapshot((snapshot) => {
+// model.searchFolderInfor = (keyWord) => {
+//     const db = firebase.firestore();
+//     modle.listener = db.collection('folders')
+//     .where('folderName','==',keyWord)
+//     .onSnapshot((snapshot) => {
 
-    })
+//     })
     
-};
+// };
