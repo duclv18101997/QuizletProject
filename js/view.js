@@ -11,7 +11,7 @@ view.setActiveScreen = (screenName) => {
 
             //listen đăng nhap button click
             const btnLogin = document.getElementById('btn-signIn');
-            if(btnLogin){
+            if (btnLogin) {
                 btnLogin.addEventListener('click', () => {
                     view.setActiveScreen('loginPage');
                 });
@@ -19,7 +19,7 @@ view.setActiveScreen = (screenName) => {
 
             //listen đăng ki button click
             const btnRegister = document.getElementById('btn-register');
-            if(btnRegister){
+            if (btnRegister) {
                 btnRegister.addEventListener('click', () => {
                     view.setActiveScreen('registerPage');
                 });
@@ -27,25 +27,25 @@ view.setActiveScreen = (screenName) => {
 
             //listen tao+ click
             const createFolderWelcome = document.getElementById('btn-add-new');
-            if(createFolderWelcome){
-                createFolderWelcome.addEventListener('click',() => {
+            if (createFolderWelcome) {
+                createFolderWelcome.addEventListener('click', () => {
                     Swal.fire({
                         type: 'error',
                         title: 'Oops...',
                         text: 'You need to login to create new folder!',
-                      })
+                    })
                 })
             }
 
             //listen bat dau hoc
             const startLearn = document.getElementById('btn-start');
-            if(startLearn){
+            if (startLearn) {
                 startLearn.addEventListener('click', () => {
                     Swal.fire({
                         type: 'error',
                         title: 'Oops...',
                         text: 'You need to login to create new folder!',
-                      })
+                    })
                 })
             }
 
@@ -119,64 +119,69 @@ view.setActiveScreen = (screenName) => {
             const resetForm = document.getElementById('reset-form');
             if (resetForm) {
                 resetForm.addEventListener('submit', (event) => {
-                    event.preventDefault();//cancel action mặc định của form
+                    event.preventDefault(); //cancel action mặc định của form
 
                     const email = resetForm.email.value;
                     controller.validateResetInfo(email);
                 });
             }
             break;
-            case 'homePage':
-                if (app) {
-                    app.innerHTML = components.homePage;
-                }
-            
+        case 'homePage':
+            if (app) {
+                app.innerHTML = components.homePage;
+            }
+
 
             //display username and disable button
-             const btnLogin1 = document.getElementById('btn-signIn'); 
-             const btnRegister1 = document.getElementById('btn-register');   
-             if(btnLogin1 && btnRegister1){
-                 btnLogin1.style.display = 'none';
-                 btnRegister1.style.display = 'none';
-                 view.displayUserInfor();
-             }
+            const btnLogin1 = document.getElementById('btn-signIn');
+            const btnRegister1 = document.getElementById('btn-register');
+            if (btnLogin1 && btnRegister1) {
+                btnLogin1.style.display = 'none';
+                btnRegister1.style.display = 'none';
+                view.displayUserInfor();
+            }
 
-             // listen click tao thu muc
-             const createFolder = document.getElementById('taoThumuc');
-             if(createFolder){
-                 createFolder.addEventListener('click', () => {
-                     console.log('aa');
+            // listen click tao thu muc
+            const createFolder = document.getElementById('taoThumuc');
+            if (createFolder) {
+                createFolder.addEventListener('click', () => {
+                    console.log('aa');
                     view.setActiveScreen('createFolderPage');
-                 });
-             }
+                });
+            }
+            //listen click view my folder
+            const myFolder = document.getElementById('my-folder');
+            if (myFolder) {
+                myFolder.addEventListener('click', () => {
+                    model.loadFolder(model.loginUser.email);
+                })
+            }
+
+            //listen click view folder detail
+            const folderDetail = document.getElementById()
             break;
-            case 'createFolderPage':
-                if (app) {
-                    app.innerHTML = components.createFolderPage;
-                }
-  
+        case 'createFolderPage':
+            if (app) {
+                app.innerHTML = components.createFolderPage;
+            }
+
             //listen click create folder form
-<<<<<<< HEAD
             // const btnCreate =document.getElementById('btn-create-folder');
             // if(btnCreate){
             //     btnCreate.addEventListener('click', () => {
 
             //     });
             // }
-=======
-            const btnCreate =document.getElementById('form-create-folder');
-            if(btnCreate){
-                btnCreate.addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    const nameOfFolder = btnCreate.folderName.value;
-                    const question = btnCreate.questionName.value;
-                    const answer = btnCreate.answerName.value;
-                    controller.validateCreateFolderInfor(nameOfFolder,question,answer);
-
-                });
-            }
->>>>>>> 0a39913b4093cdffb2b32dfbbe5de56f5d67a06a
             break;
+
+        case 'StudyFlashCard':
+            if (app) {
+                app.innerHTML = components.StudyFlashCard;
+            }
+
+            //model.loadContentFolder();
+            break;
+
     }
 };
 
@@ -205,9 +210,86 @@ view.clearRegisterInfo = () => {
 view.displayUserInfor = () => {
     const userInfor = document.getElementById('userInfor');
     const bigName = document.getElementById('big-name');
-    if(userInfor && bigName){
+    if (userInfor && bigName) {
         bigName.style.display = 'flex';
         bigName.innerText = model.loginUser.displayName[0];
         userInfor.innerText = model.loginUser.displayName;
     }
 };
+
+// add flashcart in study page
+view.addflashcart = (folder) => {
+    const listflashcart = document.getElementById('list-add');
+
+    if (listflashcart) {
+        const flashcartContainer = document.createElement('div');
+        const flashcartItemQuestion = document.createElement('div');
+        const flashcartItemAnswer = document.createElement('div');
+        flashcartContainer.classList.add('input-folder-infor-item');
+        flashcartItemQuestion.classList.add('input-question');
+        flashcartItemQuestion.classList.add('input-infor');
+        flashcartItemAnswer.classList.add('input-infor');
+        flashcartItemAnswer.classList.add('input-answer');
+        flashcartItemAnswer.innerHTML = '<input type="text" id="render-folder-question" value="' + folder.answer + '" readonly="" />';
+        flashcartItemQuestion.innerHTML = '<input type="text" id="render-folder-answer" value="' + folder.question + '" readonly="" />';
+        flashcartContainer.appendChild(flashcartItemQuestion);
+        flashcartContainer.appendChild(flashcartItemAnswer);
+        listflashcart.appendChild(flashcartContainer);
+        flashcartContainer.scrollTop = flashcartContainer.scrollHeight;
+    }
+
+};
+
+//render folder
+view.renderFolderItem = (folder) => {
+    const listFolder = document.getElementById('list-folder');
+    const titleflashcart = document.getElementById('folder-name');
+    if (titleflashcart) {
+        const titleOfFlashcart = document.createElement('h3');
+        titleOfFlashcart.classList.add("flashcard-title");
+        titleOfFlashcart.innerText = folder.folderName + " - " + model.loginUser.displayName;
+        titleflashcart.appendChild(titleOfFlashcart);
+    }
+    if (listFolder) {
+        const listFolderItems = document.createElement('div');
+        const listFolderItemsInfor = document.createElement('div');
+        const listFolderQuestionNumber = document.createElement('div');
+        const listFolderQuestionName = document.createElement('div');
+        const listFolderAuthor = document.createElement('div');
+        listFolderItems.id = folder.id;
+        listFolderItems.classList.add('list-folder-item');
+        listFolderItemsInfor.classList.add('list-folder-item-infor');
+        listFolderAuthor.classList.add('author');
+        listFolderQuestionName.classList.add('folder-header');
+        listFolderQuestionNumber.classList.add('question-number');
+        listFolderQuestionName.innerText = folder.folderName;
+        listFolderAuthor.innerText = folder.user;
+        listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
+        listFolderItemsInfor.appendChild(listFolderQuestionNumber);
+        listFolderItemsInfor.appendChild(listFolderAuthor);
+        listFolderItems.appendChild(listFolderItemsInfor);
+        listFolderItems.appendChild(listFolderQuestionName);
+        listFolder.appendChild(listFolderItems);
+        listFolder.scrollTop = listFolder.scrollHeight;
+
+        //listen click for each folder item
+        listFolderItems.addEventListener('click', () => {
+            let folderInfor;
+            model.folders.forEach((item) => {
+                if (item.id === folder.id) {
+                    folderInfor = item;
+                    console.log(folderInfor);
+                    view.setActiveScreen('StudyFlashCard');
+                }
+                folderInfor.folder.forEach((item) => {
+                    view.addflashcart(item);
+                });
+
+            });
+        });
+    }
+
+
+
+};
+t5

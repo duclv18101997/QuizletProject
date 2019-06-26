@@ -11,11 +11,6 @@ window.onload = () => {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-<<<<<<< HEAD
     //set welcome page
     view.setActiveScreen('welcomePageQuiz');
-=======
-      //set welcome page
-    view.setActiveScreen('welcomePageQuiz');  
->>>>>>> 0a39913b4093cdffb2b32dfbbe5de56f5d67a06a
 };

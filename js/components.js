@@ -92,7 +92,7 @@ components.homePage = `
                         <img src="../image/homepage.png" />
                         <div class="menu-name">Trang chủ</div>
                     </div>
-                    <div class="menu-item" id="menu-item">
+                    <div class="menu-item" id="my-folder">
                         <img src="../image/folder2.png" />
                         <div class="menu-name">Học phần của bạn </div>
                     </div>
@@ -103,7 +103,6 @@ components.homePage = `
                 </div>
             </div>
             <div id="list-folder" class="list-folder">
-                <div class="list-folder">
                         <div class="list-folder-item">
                             <div class="list-folder-item-infor">
                                 <div class="question-number"> 
@@ -207,26 +206,17 @@ components.createFolderPage = `
             <div class="list-add">
             <div class="input-folder-infor-item">
                 <div class="input-question input-infor">
-<<<<<<< HEAD
                     <input type="text" id="input-folder-question" placeholder="Enter question" />
                     <div id="question-error-message" class="error-message"></div>
                 </div>
                 <div class="input-answer input-infor">
                     <input type="text" id="input-folder-answer" placeholder="Enter answer" />
-=======
-                    <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
-                    <div id="question-error-message" class="error-message"></div>
-                </div>
-                <div class="input-answer input-infor">
-                    <input type="text" id="input-folder-answer" name = "answerName" placeholder="Enter answer" />
->>>>>>> 0a39913b4093cdffb2b32dfbbe5de56f5d67a06a
                     <div id="answer-error-message" class="error-message"></div>
                 </div>
             </div>
 
             <div class="input-folder-infor-item">
                 <div class="input-question input-infor">
-<<<<<<< HEAD
                     <input type="text" id="input-folder-question" placeholder="Enter question" />
                     <div id="question-error-message" class="error-message"></div>
                 </div>
@@ -275,29 +265,23 @@ components.searchScreen = `
 `;
 components.StudyFlashCard = `
 <div class="main-study-screen">
-            <div class="flashcard-content">
-                <h3 class="flashcard-title">JPD322_Kanji Lession 1</h3>
+            <div class="flashcard-content" id='flashcard-content'>
+            <div id='folder-name'></div>
                 <input class="main-flashcard" type="text" readonly='' value="abc">
                 <div class="flashcard-next">
                     <img src="../image/left-arrow.png" />
                     <img src="../image/right-arrow.png" />
                 </div>
             </div>
-            <div class="author-content">
-                <img class="avatar-author" src="" />
-                <p class="name-author">DuyDNSE04661</p>
-            </div>
             <form id="form-create-folder">
                 <div class="create-title">Thuật ngữ trong học phần này:</div>
-                <div class="list-add">
-                    <div class="input-folder-infor-item">
+                <div class="list-add" id='list-add'>
+                    <div class="input-folder-infor-item" id='flastcart-infor-item'>
                         <div class="input-question input-infor">
                             <input type="text" id="render-folder-question" value="きょか" readonly='' />
-                            <div id="question-error-message" class="error-message"></div>
                         </div>
                         <div class="input-answer input-infor">
                             <input type="text" id="render-folder-answer" value="許可 [HỨA KHẢ]" readonly='' />
-                            <div id="answer-error-message" class="error-message"></div>
                         </div>
                     </div>
 
@@ -326,23 +310,6 @@ components.StudyFlashCard = `
                     <button class="btn" id=' btn-add-more-item '>Thêm hoặc chỉnh sửa thuật ngữ</button>
                 </div>
             </form>
-=======
-                    <input type="text" id="input-folder-question" name ="questionName" placeholder="Enter question" />
-                    <div id="question-error-message" class="error-message"></div>
-                </div>
-                <div class="input-answer input-infor">
-                    <input type="text" id="input-folder-answer" name = "answerName" placeholder="Enter answer" />
-                    <div id="answer-error-message" class="error-message"></div>
-                </div>
-            </div>
-
-            
-        </div>
-        <div class="add-more-item">
-            <button class="btn" id='btn-add-more-item'>Thêm thuật ngữ</button>
-        </div>
-    </form>
->>>>>>> 0a39913b4093cdffb2b32dfbbe5de56f5d67a06a
         </div>
 
 `;
