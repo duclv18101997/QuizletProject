@@ -22,7 +22,7 @@ controller.validateLoginInfo = (email, password) => {
 
     if (email && password) {
         //call model => check database
-        model.loginUser(email, password);
+        model.loginUsers(email, password);
     }
 };
 
@@ -41,7 +41,7 @@ controller.validateRegisterInfo = (firstName, lastName, email, password, confirm
     } else {
         view.renderErrorMessage('error-last-name-message', '');
     }
- 
+
     //check email
     if (!email) {
         view.renderErrorMessage('error-email-message', 'Please input your email');
@@ -73,51 +73,51 @@ controller.validateRegisterInfo = (firstName, lastName, email, password, confirm
         //call model => check database
         model.creatNewUser(firstName, lastName, email, password);
     }
- 
+
 };
 
 //validate reset info
 controller.validateResetInfo = (email) => {
     // Biểu thức check định dạng email
     const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  
-    if (!email) {
-      view.renderErrorMessage('email-error-message', 'Please input email');
-    } else if (!emailRegex.test(email)) {
-      view.renderErrorMessage('email-error-message', 'Invalid email address');
-    } else {
-      view.renderErrorMessage('email-error-message', '');
-    }
-  
-    if (email) {
-      //call model => check database
-      model.resetPassword(email);
-    }
-  
-  };
 
-  controller.validateCreateFolderInfor = (nameOfFolder,question,answer) => {
+    if (!email) {
+        view.renderErrorMessage('email-error-message', 'Please input email');
+    } else if (!emailRegex.test(email)) {
+        view.renderErrorMessage('email-error-message', 'Invalid email address');
+    } else {
+        view.renderErrorMessage('email-error-message', '');
+    }
+
+    if (email) {
+        //call model => check database
+        model.resetPassword(email);
+    }
+
+};
+
+controller.validateCreateFolderInfor = (nameOfFolder, question, answer) => {
     //check nameOfFolder
-    if(!nameOfFolder){
+    if (!nameOfFolder) {
         view.renderErrorMessage('folder-name-error-message', 'Please input folder name');
-    }else{
+    } else {
         view.renderErrorMessage('folder-name-error-message', '');
     }
     //check question
-    if(!question){
-        view.renderErrorMessage('question-error-message','Please input question');
-    }else{
-        view.renderErrorMessage('question-error-message','');
+    if (!question) {
+        view.renderErrorMessage('question-error-message', 'Please input question');
+    } else {
+        view.renderErrorMessage('question-error-message', '');
     }
     //check answer
-    if(!answer){
+    if (!answer) {
         view.renderErrorMessage('answer-error-message', 'Please input answer');
-    }else{
+    } else {
         view.renderErrorMessage('answer-error-message', '');
     }
 
-    if(nameOfFolder && question && answer){
+    if (nameOfFolder && question && answer) {
         //call model
-        model.saveFolderInfor(nameOfFolder,question,answer);
+        model.saveFolderInfor(nameOfFolder, question, answer);
     }
-  };
+};

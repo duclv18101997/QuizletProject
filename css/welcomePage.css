@@ -23,7 +23,7 @@ body {
 }
 
 body {
-    background: #f0f0f0;
+    background: #ffffff;
 }
 
 .container-1 {
@@ -115,7 +115,7 @@ body {
     margin-left: 20px;
 }
 
-.header-left { 
+.header-left {
     margin-top: 20px;
     display: flex;
 }
@@ -145,9 +145,11 @@ body {
 .footer-main {
     float: bottom;
 }
-.wrap-welcome-page{
+
+.wrap-welcome-page {
     width: 100%;
 }
+
 .main-content {
     width: 100%;
     min-width: 400px;
@@ -185,7 +187,7 @@ body {
 
 .main-Introduce {
     text-align: right;
-    margin-left: 200px;
+    margin-left: 250px;
 }
 
 .main-Introduce-right {
@@ -207,50 +209,53 @@ body {
 }
 
 .main-content-student {
-    width: 100%;
-    min-width: 400px;
-    min-height: 100vh;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-
-
-.main-content-student-right {
-    width: 100%;
-    min-width: 400px;
-    min-height: 100vh;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    /* grid-template-columns: 20% 40% 40%; */
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
 .content-introduce {
+    width: 50vh;
     margin-left: 50px;
 }
 
 .content-introduce-right {
-    margin-right: 200px;
-    margin-left: 50px;
+    text-align: left;
+    margin-right: 50px;
 }
 
 .image-student {
-    margin-left: 50px;
-}
-
-.image-student-left {
-    margin-left: 250px;
+    margin-left: 150px;
 }
 
 .student-teacher {
-    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 70px;
     min-width: 400px;
     min-height: 100vh;
+    width: 100%;
+}
+
+.main-content-teacher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-teacher {
+    margin-right: 50px;
+    width: 50vh;
+}
+
+.teacher-content {
+    width: 50vh;
+    margin-left: 100px;
+}
+
+student-content {
+    text-align: right;
+    margin-left: 20px;
 }

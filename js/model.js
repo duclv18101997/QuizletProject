@@ -1,7 +1,8 @@
 const model = {};
 
-model.loginUser = undefined;
+model.loginUsers = undefined;
 model.listener = undefined;
+
 
 model.creatNewUser = (firstName, lastName, email, password) => {
 
@@ -21,7 +22,7 @@ model.creatNewUser = (firstName, lastName, email, password) => {
         });
 };
 
-model.loginUser = (email, password) => {
+model.loginUsers = (email, password) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((loginResult) => {
             //check email verified
@@ -32,7 +33,9 @@ model.loginUser = (email, password) => {
                     displayName: loginResult.user.displayName,
                     email: loginResult.user.email,
                 };
+
                 view.setActiveScreen('homePage');
+
             } else {
                 window.alert('this email is not activate, please verify your email!');
             }
@@ -56,7 +59,7 @@ model.resetPassword = (email) => {
 
 
 //load all folder of login user to homepage
-//load 1 folder
+//load 1 folder with email
 
 model.loadFolder = (email) => {
     const db = firebase.firestore();
@@ -78,6 +81,47 @@ model.loadFolder = (email) => {
 
 };
 
+//load folder by folder name
+model.loadFolderWithFolderName = (folderName) => {
+    console.log(folderName);
+    const db = firebase.firestore();
+    model.listener = db.collection('folders')
+        .where('folderName', '==', folderName)
+        .onSnapshot((snapshot) => {
+            const folders = [];
+            snapshot.docs.forEach((items) => {
+                const folder = items.data();
+                folder.id = items.id;
+                folders.push(folder);
+            });
+            model.folders = folders;
+            console.log(model.folders.length);
+            view.setActiveScreen('searchScreen');
+            model.folders.forEach((item) => {
+                view.renderFolderItemWithSearch(item);
+            });
+
+        });
+}
+
+//load all folder when comback welcome page
+model.loadFolderWelcomePage = () => {
+    const db = firebase.firestore();
+    model.listener = db.collection('folders')
+        .onSnapshot((snapshot) => {
+            const folders = [];
+            snapshot.docs.forEach((items) => {
+                const folder = items.data();
+                folder.id = items.id;
+                folders.push(folder);
+            });
+            model.folders = folders;
+            model.folders.forEach((item) => {
+                view.renderFolderItem(item);
+            });
+        });
+}
+
 // save folder infor to firebase
 model.saveFolderInfor = (nameOfFolders, questions, answers) => {
     const db = firebase.firestore();
@@ -96,16 +140,10 @@ model.saveFolderInfor = (nameOfFolders, questions, answers) => {
         .catch((error) => {
             console.log(error.code);
             window.alert(error.message);
-        } 
-        );
+        });
 }
 
-// model.searchFolderInfor = (keyWord) => {
-//     const db = firebase.firestore();
-//     modle.listener = db.collection('folders')
-//     .where('folderName','==',keyWord)
-//     .onSnapshot((snapshot) => {
-
-//     })
-    
-// };
+//clear 
+model.clearFolderListener = () => {
+    model.listener();
+};

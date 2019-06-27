@@ -9,6 +9,8 @@ view.setActiveScreen = (screenName) => {
                 app.innerHTML = components.welcomePageQuiz;
             }
 
+            //listen enter click
+
             //listen đăng nhap button click
             const btnLogin = document.getElementById('btn-signIn');
             if (btnLogin) {
@@ -129,9 +131,10 @@ view.setActiveScreen = (screenName) => {
         case 'homePage':
             if (app) {
                 app.innerHTML = components.homePage;
+
             }
 
-
+            model.loadFolderWelcomePage();
             //display username and disable button
             const btnLogin1 = document.getElementById('btn-signIn');
             const btnRegister1 = document.getElementById('btn-register');
@@ -160,11 +163,16 @@ view.setActiveScreen = (screenName) => {
 
 
             //onsearch event
-            const searchfolder = document.getElementById('search');
-            const searchKeyWord = searchfolder.value;
+            const searchfolder = document.getElementById('search-form');
+
+
             if (searchfolder) {
-                searchfolder.addEventListener('onsearch', () => {
-                    model.searchFolderInfor(searchKeyWord);
+                searchfolder.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const idSearch = document.getElementById('search');
+                    const searchKeyWord = idSearch.value;
+                    model.loadFolderWithFolderName(searchKeyWord);
+
                 })
             }
 
@@ -184,34 +192,50 @@ view.setActiveScreen = (screenName) => {
                     const nameOfFolder = document.getElementById('input-folder-name').value;
                     const question = document.getElementById('input-folder-question').value;
                     const answer = document.getElementById('input-folder-answer').value;
-                    
+
                     controller.validateCreateFolderInfor(nameOfFolder, question, answer);
-            })
-        }
+                })
+            }
 
-        //listen click them thuat ngu
-        const addMoreItem = document.getElementById('btn-add-more-item');
-        if (addMoreItem) {
-            addMoreItem.addEventListener('click', () => {
-                view.renderMoreItem();
-            })
-        }
+            //listen click them thuat ngu
+            const addMoreItem = document.getElementById('btn-add-more-item');
+            if (addMoreItem) {
+                addMoreItem.addEventListener('click', () => {
+                    view.renderMoreItem();
+                })
+            }
 
-        //listen click xoa thuat ngu
-        const cleartItem = document.getElementById('btn-clear-item');
-        if (cleartItem) {
-            cleartItem.addEventListener('click', () => {
-                view.clearItem();
-            });
-        }
+            //listen click xoa thuat ngu
+            const cleartItem = document.getElementById('btn-clear-item');
+            if (cleartItem) {
+                cleartItem.addEventListener('click', () => {
+                    view.clearItem();
+                });
+            }
             break;
 
+        case 'searchScreen':
+            if (app) {
+                app.innerHTML = components.searchScreen;
+            }
+            view.setHomePageScreen();
+            const keyWord = document.getElementById('search').value;
+            const resultSearch = document.getElementById('resultSearch');
+            console.log(model.folders.length);
+
+            if (model.folders.length === 0) {
+                resultSearch.innerText = 'Rất tiếc, không tìm thấy học phần nào khớp với: ' + keyWord;
+            } else {
+                resultSearch.innerText = 'Kết quả cho tìm kiếm từ khóa: ' + keyWord;
+            }
+
+            break;
         case 'StudyFlashCard':
             if (app) {
                 app.innerHTML = components.StudyFlashCard;
             }
+            view.setHomePageScreen();
             break;
-
     }
 };
 
@@ -305,22 +329,15 @@ view.setHomePageScreen = () => {
     const logo = document.getElementById('logo');
     if (logo) {
         logo.addEventListener('click', () => {
+            model.clearFolderListener();
             view.setActiveScreen('homePage');
         });
     }
 };
 
-
-//render folder
-view.renderFolderItem = (folder) => {
+//render folder with search
+view.renderFolderItemWithSearch = (folder) => {
     const listFolder = document.getElementById('list-folder');
-    const titleflashcart = document.getElementById('folder-name');
-    if (titleflashcart) {
-        const titleOfFlashcart = document.createElement('h3');
-        titleOfFlashcart.classList.add("flashcard-title");
-        titleOfFlashcart.innerText = folder.folderName + " - " + model.loginUser.displayName;
-        titleflashcart.appendChild(titleOfFlashcart);
-    }
     if (listFolder) {
         const listFolderItems = document.createElement('div');
         const listFolderItemsInfor = document.createElement('div');
@@ -352,21 +369,74 @@ view.renderFolderItem = (folder) => {
                     console.log(folderInfor);
                     view.setActiveScreen('StudyFlashCard');
                 }
-                folderInfor.folder.forEach((item) => {
-                    view.addflashcart(item);
-                });
-
+            });
+            folderInfor.folder.forEach((item) => {
+                view.addflashcart(item, folderInfor.folderName);
             });
         });
     }
+}
+
+//render folder
+view.renderFolderItem = (folder) => {
+    const listFolder = document.getElementById('list-folder');
+    if (listFolder) {
+        const listFolderItems = document.createElement('div');
+        const listFolderItemsInfor = document.createElement('div');
+        const listFolderQuestionNumber = document.createElement('div');
+        const listFolderQuestionName = document.createElement('div');
+        const listFolderAuthor = document.createElement('div');
+        listFolderItems.id = folder.id;
+        listFolderItems.classList.add('list-folder-item');
+        listFolderItemsInfor.classList.add('list-folder-item-infor');
+        listFolderAuthor.classList.add('author');
+        listFolderQuestionName.classList.add('folder-header');
+        listFolderQuestionNumber.classList.add('question-number');
+        listFolderQuestionName.innerText = folder.folderName;
+        listFolderAuthor.innerText = folder.user;
+        listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
+        listFolderItemsInfor.appendChild(listFolderQuestionNumber);
+        listFolderItemsInfor.appendChild(listFolderAuthor);
+        listFolderItems.appendChild(listFolderItemsInfor);
+        listFolderItems.appendChild(listFolderQuestionName);
+        listFolder.appendChild(listFolderItems);
+        listFolder.scrollTop = listFolder.scrollHeight;
+
+        //listen click for each folder item
+        listFolderItems.addEventListener('click', () => {
+            let folderInfor;
+            model.folders.forEach((item) => {
+                if (item.id === folder.id) {
+                    folderInfor = item;
+                    console.log(folderInfor);
+                    view.setActiveScreen('StudyFlashCard');
+                }
+            });
+            folderInfor.folder.forEach((item) => {
+                view.addflashcart(item);
+            });
+            const titleflashcart = document.getElementById('folder-name');
+            if (titleflashcart) {
+                const titleOfFlashcart = document.createElement('h3');
+                titleOfFlashcart.classList.add("flashcard-title");
+                titleOfFlashcart.innerText = folderInfor.folderName + " - " + folderInfor.user;
+                titleflashcart.appendChild(titleOfFlashcart);
+            }
+        });
 
 
-
+    }
 };
+
+//remove flashcart in study page
+view.removeFolderInHomePage = (listFolder) => {
+    console.log(listFolder.length);
+}
 
 // add flashcart in study page
 view.addflashcart = (folder) => {
     const listflashcart = document.getElementById('list-add');
+    //const titleflashcart = document.getElementById('folder-name');
 
     if (listflashcart) {
         const flashcartContainer = document.createElement('div');
@@ -384,5 +454,4 @@ view.addflashcart = (folder) => {
         listflashcart.appendChild(flashcartContainer);
         flashcartContainer.scrollTop = flashcartContainer.scrollHeight;
     }
-
 };

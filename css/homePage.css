@@ -4,70 +4,65 @@
     grid-template-columns: 25% 75%;
 }
 
-.menu{
-height: 100%;
-border-right: 2px solid #e9e9e9;
-
+.menu {
+    height: 100%;
+    border-right: 2px solid #e9e9e9;
 }
 
-.list-folder{
-height: 100%;
-
+.list-folder {
+    height: 100%;
+    margin-bottom: 60px;
 }
 
-.menu-item{
-height: 64px;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: flex-start;
-padding: 5px 20px;
-border-bottom: 1px solid #e9e9e9;
-} 
+.menu-item {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px 20px;
+    border-bottom: 1px solid #e9e9e9;
+}
 
 .menu .menu-item:hover {
-background-color: #fdd701;
-}  
+    background-color: #fdd701;
+}
 
 .active-menu-item {
-background-color: #fdd701;
-
+    background-color: #fdd701;
 }
 
-.menu-item .menu-name{
-margin: 5px;
-font-weight: bold;
+.menu-item .menu-name {
+    margin: 5px;
+    font-weight: bold;
 }
 
-
-.list-folder-item{
-margin: 10px;
-height: 80px;
-box-shadow: 5px 10px #01b6fd;
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-border: 1px solid #e9e9e9;
-font-weight: bold;
-margin-bottom: 20px;
+.list-folder-item {
+    margin: 10px;
+    height: 80px;
+    box-shadow: 5px 10px #01b6fd;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid #e9e9e9;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.list-folder-item .list-folder-item-infor{
-display: flex;
-justify-content: flex-start;
-
+.list-folder-item .list-folder-item-infor {
+    display: flex;
+    justify-content: flex-start;
 }
 
-.list-folder-item .list-folder-item-infor .question-number{
-border-right: 2px solid #e9e9e9 ;
-padding: 0 10px; 
+.list-folder-item .list-folder-item-infor .question-number {
+    border-right: 2px solid #e9e9e9;
+    padding: 0 10px;
 }
 
-.list-folder-item .list-folder-item-infor .author{
-padding-left: 10px;
+.list-folder-item .list-folder-item-infor .author {
+    padding-left: 10px;
 }
 
 .list-folder-item .folder-header {
-padding: 5px 10px; 
+    padding: 5px 10px;
 }
-
