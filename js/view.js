@@ -373,6 +373,13 @@ view.renderFolderItemWithSearch = (folder) => {
             folderInfor.folder.forEach((item) => {
                 view.addflashcart(item, folderInfor.folderName);
             });
+            const titleflashcart = document.getElementById('folder-name');
+            if (titleflashcart) {
+                const titleOfFlashcart = document.createElement('h3');
+                titleOfFlashcart.classList.add("flashcard-title");
+                titleOfFlashcart.innerText = folderInfor.folderName + " - " + folderInfor.user;
+                titleflashcart.appendChild(titleOfFlashcart);
+            }
         });
     }
 }
