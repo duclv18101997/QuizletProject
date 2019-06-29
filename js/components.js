@@ -209,10 +209,10 @@ components.StudyFlashCard = `
                 <div class="list-add" id='list-add'>
                     
                 </div>
-                <div class="add-more-item">
-                    <button class="btn" id=' btn-add-more-item '>Thêm hoặc chỉnh sửa thuật ngữ</button>
-                </div>
             </form>
+            <div id='edit-items' class="add-more-item">
+                    <button class="btn" id='edit-items'>Thêm hoặc chỉnh sửa thuật ngữ</button>
+                </div>
         </div>
 `;
 components.StudyFlashCardDemo = `

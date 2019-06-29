@@ -2,6 +2,7 @@ const model = {};
 
 model.loginUsers = undefined;
 model.listener = undefined;
+model.folders = undefined;
 
 
 model.creatNewUser = (firstName, lastName, email, password) => {

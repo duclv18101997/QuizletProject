@@ -15,7 +15,7 @@
 
 .main-study-screen .flashcard-content h3 {
     font-size: 1.875rem;
-    font-weight: 700px;
+    font-weight: 500px;
 }
 
 .main-study-screen .flashcard-content .flashcard-title {
@@ -40,7 +40,7 @@
 
 .main-study-screen .author-content .name-author {
     margin-right: 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.875rem;
     line-height: 1.285714285714286;
     font-weight: bold;

@@ -234,7 +234,8 @@ view.setActiveScreen = (screenName) => {
             if (app) {
                 app.innerHTML = components.StudyFlashCard;
             }
-            view.setHomePageScreen();
+
+
             break;
     }
 };
@@ -339,76 +340,7 @@ view.setHomePageScreen = () => {
 view.renderFolderItemWithSearch = (folder) => {
     const listFolder = document.getElementById('list-folder');
     if (listFolder) {
-        const listFolderItems = document.createElement('div');
-        const listFolderItemsInfor = document.createElement('div');
-        const listFolderQuestionNumber = document.createElement('div');
-        const listFolderQuestionName = document.createElement('div');
-        const listFolderAuthor = document.createElement('div');
-        listFolderItems.id = folder.id;
-        listFolderItems.classList.add('list-folder-item');
-        listFolderItemsInfor.classList.add('list-folder-item-infor');
-        listFolderAuthor.classList.add('author');
-        listFolderQuestionName.classList.add('folder-header');
-        listFolderQuestionNumber.classList.add('question-number');
-        listFolderQuestionName.innerText = folder.folderName;
-        listFolderAuthor.innerText = folder.user;
-        listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
-        listFolderItemsInfor.appendChild(listFolderQuestionNumber);
-        listFolderItemsInfor.appendChild(listFolderAuthor);
-        listFolderItems.appendChild(listFolderItemsInfor);
-        listFolderItems.appendChild(listFolderQuestionName);
-        listFolder.appendChild(listFolderItems);
-        listFolder.scrollTop = listFolder.scrollHeight;
-
-        //listen click for each folder item
-        listFolderItems.addEventListener('click', () => {
-            let folderInfor;
-            model.folders.forEach((item) => {
-                if (item.id === folder.id) {
-                    folderInfor = item;
-                    console.log(folderInfor);
-                    view.setActiveScreen('StudyFlashCard');
-                }
-            });
-            folderInfor.folder.forEach((item) => {
-                view.addflashcart(item, folderInfor.folderName);
-            });
-            const titleflashcart = document.getElementById('folder-name');
-            if (titleflashcart) {
-                const titleOfFlashcart = document.createElement('h3');
-                titleOfFlashcart.classList.add("flashcard-title");
-                titleOfFlashcart.innerText = folderInfor.folderName + " - " + folderInfor.user;
-                titleflashcart.appendChild(titleOfFlashcart);
-            }
-        });
-    }
-}
-
-//render folder
-view.renderFolderItem = (folder) => {
-    const listFolder = document.getElementById('list-folder');
-    if (listFolder) {
-        const listFolderItems = document.createElement('div');
-        const listFolderItemsInfor = document.createElement('div');
-        const listFolderQuestionNumber = document.createElement('div');
-        const listFolderQuestionName = document.createElement('div');
-        const listFolderAuthor = document.createElement('div');
-        listFolderItems.id = folder.id;
-        listFolderItems.classList.add('list-folder-item');
-        listFolderItemsInfor.classList.add('list-folder-item-infor');
-        listFolderAuthor.classList.add('author');
-        listFolderQuestionName.classList.add('folder-header');
-        listFolderQuestionNumber.classList.add('question-number');
-        listFolderQuestionName.innerText = folder.folderName;
-        listFolderAuthor.innerText = folder.user;
-        listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
-        listFolderItemsInfor.appendChild(listFolderQuestionNumber);
-        listFolderItemsInfor.appendChild(listFolderAuthor);
-        listFolderItems.appendChild(listFolderItemsInfor);
-        listFolderItems.appendChild(listFolderQuestionName);
-        listFolder.appendChild(listFolderItems);
-        listFolder.scrollTop = listFolder.scrollHeight;
-
+        view.renderFolder(folder);
         //listen click for each folder item
         listFolderItems.addEventListener('click', () => {
             let folderInfor;
@@ -425,13 +357,44 @@ view.renderFolderItem = (folder) => {
             const titleflashcart = document.getElementById('folder-name');
             if (titleflashcart) {
                 const titleOfFlashcart = document.createElement('h3');
+                titleOfFlashcart.id = folderInfor.id;
                 titleOfFlashcart.classList.add("flashcard-title");
                 titleOfFlashcart.innerText = folderInfor.folderName + " - " + folderInfor.user;
                 titleflashcart.appendChild(titleOfFlashcart);
             }
+            view.listenClickButtonAddorEdit(folder);
         });
 
+    }
+}
 
+//render folder
+view.renderFolderItem = (folder) => {
+    const listFolder = document.getElementById('list-folder');
+    if (listFolder) {
+        view.renderFolder(folder);
+        //listen click for each folder item
+        listFolderItems.addEventListener('click', () => {
+            let folderInfor;
+            model.folders.forEach((item) => {
+                if (item.id === folder.id) {
+                    folderInfor = item;
+                    view.setActiveScreen('StudyFlashCard');
+                }
+            });
+            folderInfor.folder.forEach((item) => {
+                view.addflashcart(item);
+            });
+            const titleflashcart = document.getElementById('folder-name');
+            if (titleflashcart) {
+                const titleOfFlashcart = document.createElement('h3');
+                titleOfFlashcart.id = folderInfor.id;
+                titleOfFlashcart.classList.add("flashcard-title");
+                titleOfFlashcart.innerText = folderInfor.folderName + " - " + folderInfor.user;
+                titleflashcart.appendChild(titleOfFlashcart);
+            }
+            view.listenClickButtonAddorEdit(folder);
+        });
     }
 };
 
@@ -443,7 +406,7 @@ view.removeFolderInHomePage = (listFolder) => {
 // add flashcart in study page
 view.addflashcart = (folder) => {
     const listflashcart = document.getElementById('list-add');
-    //const titleflashcart = document.getElementById('folder-name');
+
 
     if (listflashcart) {
         const flashcartContainer = document.createElement('div');
@@ -460,5 +423,74 @@ view.addflashcart = (folder) => {
         flashcartContainer.appendChild(flashcartItemAnswer);
         listflashcart.appendChild(flashcartContainer);
         flashcartContainer.scrollTop = flashcartContainer.scrollHeight;
+
+
     }
 };
+
+//ngay 29/6 render flashcart in new folder
+view.renderflashcart = (folder) => {
+    const listflashcart = document.getElementById('list-add');
+    if (listflashcart) {
+        const flashcartContainer = document.createElement('div');
+        const flashcartItemQuestion = document.createElement('div');
+        const flashcartItemAnswer = document.createElement('div');
+        flashcartContainer.classList.add('input-folder-infor-item');
+        flashcartItemQuestion.classList.add('input-question');
+        flashcartItemQuestion.classList.add('input-infor');
+        flashcartItemAnswer.classList.add('input-infor');
+        flashcartItemAnswer.classList.add('input-answer');
+        flashcartItemAnswer.innerHTML = '<input type="text" id="render-folder-question" value="' + folder.answer + '" />';
+        flashcartItemQuestion.innerHTML = '<input type="text" id="render-folder-answer" value="' + folder.question + '"/>';
+        flashcartContainer.appendChild(flashcartItemQuestion);
+        flashcartContainer.appendChild(flashcartItemAnswer);
+        listflashcart.appendChild(flashcartContainer);
+        flashcartContainer.scrollTop = flashcartContainer.scrollHeight;
+    }
+};
+
+//ngay 29/6 lang nghe nut click de edit
+
+view.listenClickButtonAddorEdit = (folder) => {
+    const btnAddNewOrEditFlashcart = document.getElementById("edit-items");
+    if (btnAddNewOrEditFlashcart) {
+        btnAddNewOrEditFlashcart.addEventListener('click', () => {
+            let folderInforWithAddOrEdit;
+            model.folders.forEach((item) => {
+                if (item.id == folder.id) {
+                    folderInforWithAddOrEdit = item;
+                    view.setActiveScreen('createFolderPage');
+                }
+            });
+            const inputFolderName = document.getElementById("input-folder-name");
+            inputFolderName.value = folder.folderName;
+            folderInforWithAddOrEdit.folder.forEach((items) => {
+                view.renderflashcart(items);
+            })
+        });
+    }
+};
+
+//29-6 chinh sua cho gon code
+view.renderFolder = (folder) => {
+    const listFolderItems = document.createElement('div');
+    const listFolderItemsInfor = document.createElement('div');
+    const listFolderQuestionNumber = document.createElement('div');
+    const listFolderQuestionName = document.createElement('div');
+    const listFolderAuthor = document.createElement('div');
+    listFolderItems.id = folder.id;
+    listFolderItems.classList.add('list-folder-item');
+    listFolderItemsInfor.classList.add('list-folder-item-infor');
+    listFolderAuthor.classList.add('author');
+    listFolderQuestionName.classList.add('folder-header');
+    listFolderQuestionNumber.classList.add('question-number');
+    listFolderQuestionName.innerText = folder.folderName;
+    listFolderAuthor.innerText = folder.user;
+    listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
+    listFolderItemsInfor.appendChild(listFolderQuestionNumber);
+    listFolderItemsInfor.appendChild(listFolderAuthor);
+    listFolderItems.appendChild(listFolderItemsInfor);
+    listFolderItems.appendChild(listFolderQuestionName);
+    listFolder.appendChild(listFolderItems);
+    listFolder.scrollTop = listFolder.scrollHeight;
+}
