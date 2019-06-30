@@ -157,6 +157,7 @@ view.setActiveScreen = (screenName) => {
             const myFolder = document.getElementById('my-folder');
             if (myFolder) {
                 myFolder.addEventListener('click', () => {
+                    view.setActiveScreen('myFolderPage');
                     model.loadFolder(model.loginUser.email);
                 })
             }
@@ -234,9 +235,12 @@ view.setActiveScreen = (screenName) => {
             if (app) {
                 app.innerHTML = components.StudyFlashCard;
             }
-
-
             break;
+        case 'myFolderPage':
+            if (app) {
+                app.innerHTML = components.myFolderPage;
+            }
+            view.setHomePageScreen();
     }
 };
 
@@ -340,7 +344,26 @@ view.setHomePageScreen = () => {
 view.renderFolderItemWithSearch = (folder) => {
     const listFolder = document.getElementById('list-folder');
     if (listFolder) {
-        view.renderFolder(folder);
+        const listFolderItems = document.createElement('div');
+        const listFolderItemsInfor = document.createElement('div');
+        const listFolderQuestionNumber = document.createElement('div');
+        const listFolderQuestionName = document.createElement('div');
+        const listFolderAuthor = document.createElement('div');
+        listFolderItems.id = folder.id;
+        listFolderItems.classList.add('list-folder-item');
+        listFolderItemsInfor.classList.add('list-folder-item-infor');
+        listFolderAuthor.classList.add('author');
+        listFolderQuestionName.classList.add('folder-header');
+        listFolderQuestionNumber.classList.add('question-number');
+        listFolderQuestionName.innerText = folder.folderName;
+        listFolderAuthor.innerText = folder.user;
+        listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
+        listFolderItemsInfor.appendChild(listFolderQuestionNumber);
+        listFolderItemsInfor.appendChild(listFolderAuthor);
+        listFolderItems.appendChild(listFolderItemsInfor);
+        listFolderItems.appendChild(listFolderQuestionName);
+        listFolder.appendChild(listFolderItems);
+        listFolder.scrollTop = listFolder.scrollHeight;
         //listen click for each folder item
         listFolderItems.addEventListener('click', () => {
             let folderInfor;
@@ -351,6 +374,8 @@ view.renderFolderItemWithSearch = (folder) => {
                     view.setActiveScreen('StudyFlashCard');
                 }
             });
+            const searchForm = document.getElementById('search');
+            searchForm.value = '';
             folderInfor.folder.forEach((item) => {
                 view.addflashcart(item);
             });
@@ -372,7 +397,26 @@ view.renderFolderItemWithSearch = (folder) => {
 view.renderFolderItem = (folder) => {
     const listFolder = document.getElementById('list-folder');
     if (listFolder) {
-        view.renderFolder(folder);
+        const listFolderItems = document.createElement('div');
+        const listFolderItemsInfor = document.createElement('div');
+        const listFolderQuestionNumber = document.createElement('div');
+        const listFolderQuestionName = document.createElement('div');
+        const listFolderAuthor = document.createElement('div');
+        listFolderItems.id = folder.id;
+        listFolderItems.classList.add('list-folder-item');
+        listFolderItemsInfor.classList.add('list-folder-item-infor');
+        listFolderAuthor.classList.add('author');
+        listFolderQuestionName.classList.add('folder-header');
+        listFolderQuestionNumber.classList.add('question-number');
+        listFolderQuestionName.innerText = folder.folderName;
+        listFolderAuthor.innerText = folder.user;
+        listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
+        listFolderItemsInfor.appendChild(listFolderQuestionNumber);
+        listFolderItemsInfor.appendChild(listFolderAuthor);
+        listFolderItems.appendChild(listFolderItemsInfor);
+        listFolderItems.appendChild(listFolderQuestionName);
+        listFolder.appendChild(listFolderItems);
+        listFolder.scrollTop = listFolder.scrollHeight;
         //listen click for each folder item
         listFolderItems.addEventListener('click', () => {
             let folderInfor;
@@ -406,8 +450,6 @@ view.removeFolderInHomePage = (listFolder) => {
 // add flashcart in study page
 view.addflashcart = (folder) => {
     const listflashcart = document.getElementById('list-add');
-
-
     if (listflashcart) {
         const flashcartContainer = document.createElement('div');
         const flashcartItemQuestion = document.createElement('div');
@@ -459,6 +501,7 @@ view.listenClickButtonAddorEdit = (folder) => {
             model.folders.forEach((item) => {
                 if (item.id == folder.id) {
                     folderInforWithAddOrEdit = item;
+                    model.thu(folder);
                     view.setActiveScreen('createFolderPage');
                 }
             });
@@ -470,27 +513,3 @@ view.listenClickButtonAddorEdit = (folder) => {
         });
     }
 };
-
-//29-6 chinh sua cho gon code
-view.renderFolder = (folder) => {
-    const listFolderItems = document.createElement('div');
-    const listFolderItemsInfor = document.createElement('div');
-    const listFolderQuestionNumber = document.createElement('div');
-    const listFolderQuestionName = document.createElement('div');
-    const listFolderAuthor = document.createElement('div');
-    listFolderItems.id = folder.id;
-    listFolderItems.classList.add('list-folder-item');
-    listFolderItemsInfor.classList.add('list-folder-item-infor');
-    listFolderAuthor.classList.add('author');
-    listFolderQuestionName.classList.add('folder-header');
-    listFolderQuestionNumber.classList.add('question-number');
-    listFolderQuestionName.innerText = folder.folderName;
-    listFolderAuthor.innerText = folder.user;
-    listFolderQuestionNumber.innerText = folder.folder.length + ' Thuật Ngữ';
-    listFolderItemsInfor.appendChild(listFolderQuestionNumber);
-    listFolderItemsInfor.appendChild(listFolderAuthor);
-    listFolderItems.appendChild(listFolderItemsInfor);
-    listFolderItems.appendChild(listFolderQuestionName);
-    listFolder.appendChild(listFolderItems);
-    listFolder.scrollTop = listFolder.scrollHeight;
-}

@@ -148,3 +148,6 @@ model.saveFolderInfor = (nameOfFolders, questions, answers) => {
 model.clearFolderListener = () => {
     model.listener();
 };
+model.thu = (folder) => {
+    console.log(folder.id);
+}

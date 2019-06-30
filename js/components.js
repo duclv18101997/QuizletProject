@@ -107,6 +107,29 @@ components.homePage = `
         </div>
     
 `;
+components.myFolderPage = `
+<div id="content" class="content">
+            <div id="site-bar" class="site-bar">
+                <div class="menu" id="menu">
+                    <div class="menu-item" id="home-page">
+                        <img src="../image/homepage.png" />
+                        <div class="menu-name">Trang chủ</div>
+                    </div>
+                    <div class="menu-item" id="my-folder">
+                        <img src="../image/folder2.png" />
+                        <div class="menu-name">Học phần của bạn </div>
+                    </div>
+                    <div class="menu-item" id="taoThumuc">
+                        <img src="../image/create.png" />
+                        <div class="menu-name">Tạo thư mục </div>
+                    </div>
+                </div>
+            </div>
+            <div id="list-folder" class="list-folder">
+            </div>
+        </div>
+    
+`;
 
 components.welcomePageQuiz = `
 <div class="main-content">
