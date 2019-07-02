@@ -1,8 +1,15 @@
 const view = {};
 
+view.setSlickScreen = () => {
+    console.log('aaaaaaaaaaa0000');
+    $(".lazy").slick({
+        lazyLoad: 'ondemand', // ondemand progressive anticipated
+        infinite: true
+    });
+};
+
 view.setActiveScreen = (screenName) => {
     const app = document.getElementById('app');
-
     switch (screenName) {
         case 'welcomePageQuiz':
             if (app) {
@@ -148,7 +155,6 @@ view.setActiveScreen = (screenName) => {
             const createFolder = document.getElementById('taoThumuc');
             if (createFolder) {
                 createFolder.addEventListener('click', () => {
-                    console.log('aa');
                     view.setActiveScreen('createFolderPage');
                 });
             }
@@ -235,6 +241,8 @@ view.setActiveScreen = (screenName) => {
             if (app) {
                 app.innerHTML = components.StudyFlashCard;
             }
+
+            view.setHomePageScreen();
             break;
         case 'myFolderPage':
             if (app) {
@@ -379,6 +387,7 @@ view.renderFolderItemWithSearch = (folder) => {
             folderInfor.folder.forEach((item) => {
                 view.addflashcart(item);
             });
+            view.setSlickScreen();
             const titleflashcart = document.getElementById('folder-name');
             if (titleflashcart) {
                 const titleOfFlashcart = document.createElement('h3');
@@ -429,6 +438,7 @@ view.renderFolderItem = (folder) => {
             folderInfor.folder.forEach((item) => {
                 view.addflashcart(item);
             });
+            view.setSlickScreen();
             const titleflashcart = document.getElementById('folder-name');
             if (titleflashcart) {
                 const titleOfFlashcart = document.createElement('h3');
@@ -450,23 +460,43 @@ view.removeFolderInHomePage = (listFolder) => {
 // add flashcart in study page
 view.addflashcart = (folder) => {
     const listflashcart = document.getElementById('list-add');
-    if (listflashcart) {
+    const slickLazy = document.getElementById('slick-lazy');
+    if (listflashcart && slickLazy) {
         const flashcartContainer = document.createElement('div');
         const flashcartItemQuestion = document.createElement('div');
         const flashcartItemAnswer = document.createElement('div');
+        const flipCardLazy = document.createElement('div');
+        const flipCardInner = document.createElement('div');
+        const flipCardFont = document.createElement('div');
+        const flipCardContentQuestion = document.createElement('div');
+        const flipCardContentAnswer = document.createElement('div');
+        const flipCardBack = document.createElement('div');
+        flipCardLazy.classList.add('flip-card');
+        flipCardInner.classList.add('flip-card-inner');
+        flipCardFont.classList.add('flip-card-front');
+        flipCardContentQuestion.classList.add('flip-lazy-content');
+        flipCardContentAnswer.classList.add('flip-lazy-content');
+        flipCardBack.classList.add('flip-card-back');
         flashcartContainer.classList.add('input-folder-infor-item');
         flashcartItemQuestion.classList.add('input-question');
         flashcartItemQuestion.classList.add('input-infor');
         flashcartItemAnswer.classList.add('input-infor');
         flashcartItemAnswer.classList.add('input-answer');
+        // gan du lieu
+        flipCardContentAnswer.innerText = folder.answer;
+        flipCardContentQuestion.innerText = folder.question;
         flashcartItemAnswer.innerHTML = '<input type="text" id="render-folder-question" value="' + folder.answer + '" readonly="" />';
         flashcartItemQuestion.innerHTML = '<input type="text" id="render-folder-answer" value="' + folder.question + '" readonly="" />';
+        flipCardBack.appendChild(flipCardContentAnswer);
+        flipCardFont.appendChild(flipCardContentQuestion);
+        flipCardInner.appendChild(flipCardBack);
+        flipCardInner.appendChild(flipCardFont);
+        flipCardLazy.appendChild(flipCardInner);
+        slickLazy.appendChild(flipCardLazy);
         flashcartContainer.appendChild(flashcartItemQuestion);
         flashcartContainer.appendChild(flashcartItemAnswer);
         listflashcart.appendChild(flashcartContainer);
         flashcartContainer.scrollTop = flashcartContainer.scrollHeight;
-
-
     }
 };
 

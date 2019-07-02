@@ -221,7 +221,8 @@ components.StudyFlashCard = `
 <div class="main-study-screen">
             <div class="flashcard-content" id='flashcard-content'>
                 <div id='folder-name'></div>
-                <input class="main-flashcard" type="text" readonly='' value="abc">
+                <section class="lazy slider" id='slick-lazy'>
+                </section>
                 <div class="flashcard-next">
                     <img src="../image/left-arrow.png" />
                     <img src="../image/right-arrow.png" />
@@ -230,44 +231,12 @@ components.StudyFlashCard = `
             <form id="form-create-folder">
                 <div class="create-title">Thuật ngữ trong học phần này:</div>
                 <div class="list-add" id='list-add'>
-                    
-                </div>
-            </form>
-            <div id='edit-items' class="add-more-item">
-                    <button class="btn" id='edit-items'>Thêm hoặc chỉnh sửa thuật ngữ</button>
-                </div>
-        </div>
-`;
-components.StudyFlashCardDemo = `
-<div class="main-study-screen">
-            <div class="flashcard-content" id='flashcard-content'>
-                <div id='folder-name'></div>
-                <section class="lazy regular slider">
-                    <div class="card middle">
-                        <div class="question-font">
-                            <input class="main-flashcard" type="text" readonly='' value="abc">
-                        </div>
-                        <div class="answer-font">
-                            <input class="main-flashcard" type="text" readonly='' value="123">
-                        </div>
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/350x300?text=2">
-                    </div>
 
-                </section>
-                <div class="flashcard-next">
-                    <img src="../image/left-arrow.png" />
-                    <img src="../image/right-arrow.png" />
                 </div>
+
+            </form>
+            <div class="edit-item" id="edit-item">
+                <button class="btn center" id='btn-edit-item'>Thêm hoặc chỉnh sửa thuật ngữ</button>
             </div>
-
-            <form id="form-create-folder">
-                <div class="create-title">Thuật ngữ trong học phần này:</div>
-                <div class="list-add" id='list-add'></div>
-                <div class="add-more-item">
-                    <button class="btn" id=' btn-add-more-item '>Thêm hoặc chỉnh sửa thuật ngữ</button>
-                </div>
-            </form>
         </div>
 `;
